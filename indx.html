@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fake AI Chatbot</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+    #chatbox {
+      border: 1px solid #ccc;
+      padding: 10px;
+      height: 300px;
+      overflow-y: scroll;
+      margin-bottom: 10px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      width: calc(100% - 22px);
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Simple Chatbot</h1>
+  <div id="chatbox"></div>
+  <input type="text" id="userInput" placeholder="Type something..." />
+  <button onclick="sendMessage()">Send</button>
+
+  <script>
+    function sendMessage() {
+      const input = document.getElementById("userInput");
+      const message = input.value.trim();
+      if (message === "") return;
+
+      const chatbox = document.getElementById("chatbox");
+      chatbox.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
+
+      // Fake chatbot logic
+      let reply = "Hmm, I don't understand that.";
+      const msg = message.toLowerCase();
+      if (msg.includes("hello")) reply = "Hi there!";
+      else if (msg.includes("how are you")) reply = "I'm just a bot, but I'm doing great!";
+      else if (msg.includes("bye")) reply = "Goodbye! Have a great day!";
+      else if (msg.includes("help")) reply = "Try saying hello, asking how I am, or saying bye.";
+
+      chatbox.innerHTML += `<p><strong>Bot:</strong> ${reply}</p>`;
+      chatbox.scrollTop = chatbox.scrollHeight;
+
+      input.value = "";
+    }
+  </script>
+</body>
+</html>
