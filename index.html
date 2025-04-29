@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fake AI Chatbot</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    #chatbox { border: 1px solid #ccc; padding: 10px; height: 300px; overflow-y: scroll; }
+    input, button { padding: 10px; margin-top: 10px; width: 100%; }
+  </style>
+</head>
+<body>
+  <h1>Simple Chatbot</h1>
+  <div id="chatbox"></div>
+  <input type="text" id="userInput" placeholder="Type something..." />
+  <button onclick="sendMessage()">Send</button>
+
+  <script>
+    function sendMessage() {
+      const input = document.getElementById("userInput");
+      const message = input.value.trim();
+      if (!message) return;
+
+      const chatbox = document.getElementById("chatbox");
+      chatbox.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
+
+      // Simple fake AI response
+      let reply = "I didn't understand that.";
+      if (message.toLowerCase().includes("hello")) reply = "Hello there!";
+      else if (message.toLowerCase().includes("how are you")) reply = "I'm just code, but thanks for asking!";
+      else if (message.toLowerCase().includes("bye")) reply = "Goodbye!";
+
+      chatbox.innerHTML += `<p><strong>Bot:</strong> ${reply}</p>`;
+      input.value = "";
+      chatbox.scrollTop = chatbox.scrollHeight;
+    }
+  </script>
+</body>
+</html>
